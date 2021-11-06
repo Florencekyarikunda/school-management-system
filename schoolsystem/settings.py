@@ -1,3 +1,5 @@
+ import  django_heroku
+
 """
 Django settings for schoolsystem project.
 
@@ -26,7 +28,7 @@ SECRET_KEY = 'django-insecure-rrt!fj#)vhuqq!)!voc=*gbb#r@kss@o53_uf6&9d=xjze!*bu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['managementl.herokuapp.com']
 
 
 # Application definition
@@ -129,9 +131,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIR=[
-    BASE_DIR/"static"
-]
+# STATICFILES_DIR=[
+#     BASE_DIR/"static"
+# ]
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 
 MEDIA_URL="/images/"
 MEDIA_ROOT=os.path.join(BASE_DIR,'static/images/')
@@ -147,3 +150,5 @@ DATABASES['default'].update(prod_db)
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+django_heroku.settings(locals())
